@@ -41,8 +41,10 @@ void * recv_data_thread(void *arg) {
         bzero(udp_buf, BUFSIZE);
         n = recvfrom(sockfd, udp_buf, BUFSIZE, 0,
             (struct sockaddr *) &clientaddr, &clientlen);
+        /*
         if (n < 0)
             error("ERROR in recvfrom");
+        */
 
         strcpy(tmp, udp_buf);
 
