@@ -1,0 +1,11 @@
+# NB Hardware Demo
+
+## MCU
+ * STM32 Demo
+## website
+ * PHP Website
+## websocket
+ * WebSocket For PHP Website
+   * [A simple UDP echo server](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f99/www/class26/udpserver.c)
+   * [A simple UDP client](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f99/www/class26/udpclient.c)
+   * [UDP packetsender tool](https://packetsender.com/download)

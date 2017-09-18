@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/justgage.js"></script>
+        <script src="js/raphael-2.1.4.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                window.WebSocket = window.WebSocket || window.MozWebSocket;
+                var websocket = new WebSocket('ws://23.106.155.16:9000',
+                                              'dumb-increment-protocol');
+                websocket.onopen = function () {
+                    $('h1').css('color', 'green');
+                    websocket.send("start");
+                };
+                websocket.onerror = function () {
+                    $('h1').css('color', 'red');
+                };
+                websocket.onmessage = function (message) {
+					root = eval("(" + message.data + ")");
+                    console.log(root["temperature"]);
+
+					temperature.refresh(root["temperature"]);
+                };
+                
+			    var temperature = new JustGage({
+			      id: "gauge",
+			      value: 0,
+			      min: 0,
+			      max: 100,
+			    });
+
+            });
+        </script>
+		<style>
+		  #gauge {
+			width:400px; height:320px;
+			margin: 1em;
+		  }
+		</style>
+        </head>
+    <body>
+        <div align="center">
+			<h1> NB Hardware Demo </h1>
+        	<div id="gauge"></div>
+		</div>
+    </body>
+</html>
