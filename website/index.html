@@ -8,7 +8,7 @@
         <script type="text/javascript">
             $(function() {
                 window.WebSocket = window.WebSocket || window.MozWebSocket;
-                var websocket = new WebSocket('ws://23.106.155.16:9000',
+                var websocket = new WebSocket('ws://23.106.155.16:9099',
                                               'dumb-increment-protocol');
                 websocket.onopen = function () {
                     $('h1').css('color', 'green');
@@ -18,10 +18,12 @@
                     $('h1').css('color', 'red');
                 };
                 websocket.onmessage = function (message) {
-					root = eval("(" + message.data + ")");
-                    console.log(root["temperature"]);
+                    if (message.data.length > 0) {
+                        root = eval("(" + message.data + ")");
+                        console.log(root["temperature"]);
 
-					temperature.refresh(root["temperature"]);
+                        temperature.refresh(root["temperature"]);
+                    }
                 };
                 
 			    var temperature = new JustGage({

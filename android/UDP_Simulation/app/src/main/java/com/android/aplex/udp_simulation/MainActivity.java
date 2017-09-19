@@ -5,7 +5,11 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -15,12 +19,17 @@ import java.net.SocketException;
 public class MainActivity extends AppCompatActivity {
 
     private TempControlView tempControl;
+    public EditText udp_ip;
+    public EditText upd_port;
     private int current_temp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        udp_ip = (EditText) (findViewById(R.id.udp_ip));
+        upd_port = (EditText) (findViewById(R.id.udp_port));
 
         tempControl = (TempControlView) findViewById(R.id.temp_control);
         // 设置三格代表温度1度
@@ -42,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             socket = new DatagramSocket();
-                            address = InetAddress.getByName("23.106.155.16");
+                            address = InetAddress.getByName(udp_ip.getText().toString());
 
                             String send_str = "{\"temperature\":" + current_temp + "}";
 
-                            DatagramPacket packet = new DatagramPacket(send_str.getBytes(), send_str.getBytes().length, address, 9098);
+                            DatagramPacket packet = new DatagramPacket(send_str.getBytes(), send_str.getBytes().length, address, Integer.valueOf(upd_port.getText().toString()));
                             socket.send(packet);
 
                         } catch (Exception e) {
