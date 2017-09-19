@@ -85,10 +85,24 @@ static int callback_dumb_increment(struct lws *wsi,
         case LWS_CALLBACK_RECEIVE: { // the funny part
             printf("received data: %s\n", (char *) in);
 
+            int ret = 0;
+            int count = 0;
             while(1) {
 
                 if (receive_flag == 0 ) {
-                    usleep(1000 * 10);
+                    if (count++ % 10 == 0) {
+                        char *ws_buf_clear = (unsigned char*) malloc(LWS_SEND_BUFFER_PRE_PADDING +
+                                                                     LWS_SEND_BUFFER_POST_PADDING);
+                        
+                        ret = lws_write(wsi, &ws_buf_clear[LWS_SEND_BUFFER_PRE_PADDING], 0, LWS_WRITE_TEXT);
+                        if (ret == -1) {
+                            break;
+                        }
+
+                        free(ws_buf_clear);
+                    }
+
+                    usleep(1000 * 100);
                     continue;
                 }
 
@@ -98,7 +112,11 @@ static int callback_dumb_increment(struct lws *wsi,
                 
                 strcpy(&ws_buf[LWS_SEND_BUFFER_PRE_PADDING], tmp);
                         
-                lws_write(wsi, &ws_buf[LWS_SEND_BUFFER_PRE_PADDING], back_len, LWS_WRITE_TEXT);
+                ret = lws_write(wsi, &ws_buf[LWS_SEND_BUFFER_PRE_PADDING], back_len, LWS_WRITE_TEXT);
+                printf("ret = %d.\n", ret);
+                if (ret == -1) {
+                    break;
+                }
 
                 free(ws_buf);
 
@@ -135,7 +153,7 @@ static struct lws_protocols protocols[] = {
 
 int main(void) {
     // server url will be http://localhost:9000
-    int port = 9000;
+    int port = 9099;
     struct lws_context *context;
     struct lws_context_creation_info context_info =
     {
@@ -166,7 +184,7 @@ int main(void) {
     int n; /* message byte size */
     pthread_t recv_thread;
 
-    portno = 9001;
+    portno = 9098;
 
     /* 
      * socket: create the parent socket 
