@@ -45,8 +45,15 @@ void * recv_data_thread(void *arg) {
         if (n < 0)
             error("ERROR in recvfrom");
         */
-
-        strcpy(tmp, udp_buf);
+	    if (strlen(udp_buf) == 8) {
+            strcpy(tmp, "{\"temperature\":");
+            strcpy(tmp + strlen("{\"temperature\":"), udp_buf + 6);
+            tmp[strlen(tmp)] = '}';
+            printf("STM32: %s\r\n", tmp);
+        } else {
+            strcpy(tmp, udp_buf);
+            printf("Android: %s\r\n", tmp);
+        }
 
         /* 
          * gethostbyaddr: determine who sent the datagram

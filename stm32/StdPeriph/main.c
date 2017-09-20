@@ -39,17 +39,24 @@ void vTaskLedRed(void *p)
 
 void vTaskEXTILed(void *p)
 {
+    USART2drv->Send("AT+NSOCR=DGRAM,17,4587,1\r\n", strlen("AT+NSOCR=DGRAM,17,4587,1\r\n"));
+    printf("vTaskEXTILed.\r\n");
     for (;;)
     {
         osSemaphoreAcquire (sid_Thread_Semaphore, osWaitForever);
         led_toggle(GPIOE, GPIO_Pin_5);
         printf("EXTI Count Value: %d\r\n", count);
         
-        strcpy(iot_send_buf, "{\"temperature\":");
+        strcpy(iot_send_buf, "AT+NSOST=0,120.24.184.124,8010,8,176A9B108A23");
+        iot_send_buf[strlen(iot_send_buf)] = 3 + 0x30;
         iot_send_buf[strlen(iot_send_buf)] = (count / 10) + 0x30;
+        iot_send_buf[strlen(iot_send_buf)] = 3 + 0x30;
         iot_send_buf[strlen(iot_send_buf)] = (count % 10) + 0x30;
-        iot_send_buf[strlen(iot_send_buf)] = '}';
+        iot_send_buf[strlen(iot_send_buf)] = '\r';
+        iot_send_buf[strlen(iot_send_buf)] = '\n';
         USART2drv->Send(iot_send_buf, strlen(iot_send_buf));
+        
+        // USART2drv->Send("AT+NSOST=0,120.24.184.124,8010,12,176A9B108A23303132333435\r\n", strlen("AT+NSOST=0,120.24.184.124,8010,12,176A9B108A23303132333435\r\n"));
     }
 }
 

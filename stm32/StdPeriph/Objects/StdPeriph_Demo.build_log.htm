@@ -29,48 +29,48 @@ Project File Date:  09/11/2017
 Build target 'Target'
 compiling main.c...
 linking...
-Program Size: Code=26800 RO-data=1604 RW-data=220 ZI-data=12820  
+Program Size: Code=26836 RO-data=1604 RW-data=220 ZI-data=12820  
 ".\Objects\StdPeriph_Demo.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
                 http://www.keil.com/pack/ARM.CMSIS.5.1.0.pack
-                ::CMSIS Driver:I2C:2.3.0 (API)
+                ::CMSIS Driver:USART:2.3.0 (API)
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: I2C Version: 2.3.0
-   * Component: SPI Version: 2.2.0
-   * Component: RTOS2 Version: 2.1.1
    * Component: USART Version: 2.3.0
+   * Component: I2C Version: 2.3.0
+   * Component: RTOS2 Version: 2.1.1
+   * Component: SPI Version: 2.2.0
    * Component: CORE Version: 5.0.2
 
 Package Vendor: ARM
                 http://www.keil.com/pack/ARM.CMSIS-FreeRTOS.9.1.0.pack
-                ARM.FreeRTOS::RTOS:Heap:Heap_4:9.0.0
+                ARM::CMSIS:RTOS2:FreeRTOS:9.1.0
                 Bundle of FreeRTOS for Cortex-M and Cortex-A
-   * Component: Heap Variant: Heap_4 Version: 9.0.0
    * Component: FreeRTOS Version: 9.1.0
-   * Component: Config Variant: CMSIS RTOS2 Version: 9.0.0
-   * Component: Coroutines Version: 9.0.0
-   * Component: Event Groups Version: 9.0.0
    * Component: Core Version: 9.0.0
+   * Component: Config Variant: CMSIS RTOS2 Version: 9.0.0
    * Component: Timers Version: 9.0.0
+   * Component: Coroutines Version: 9.0.0
+   * Component: Heap Variant: Heap_4 Version: 9.0.0
+   * Component: Event Groups Version: 9.0.0
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.2.0.pack
-                Keil::CMSIS Driver:SPI:2.2
+                Keil::Device:StdPeriph Drivers:SPI:3.5.0
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
-   * Component: SPI Version: 2.2
-   * Component: Startup Version: 1.0.0
-   * Component: RCC Version: 3.5.0
    * Component: SPI Version: 3.5.0
+   * Component: USART Version: 3.5.0
+   * Component: GPIO Version: 1.3
+   * Component: RCC Version: 3.5.0
+   * Component: GPIO Version: 3.5.0
+   * Component: DMA Version: 1.2
+   * Component: Startup Version: 1.0.0
    * Component: Framework Version: 3.5.1
    * Component: EXTI Version: 3.5.0
-   * Component: GPIO Version: 1.3
-   * Component: DMA Version: 1.2
-   * Component: GPIO Version: 3.5.0
-   * Component: USART Version: 3.5.0
    * Component: USART Version: 2.2
+   * Component: SPI Version: 2.2
    * Component: I2C Version: 2.1
 
 <h2>Collection of Component include folders:</h2>
@@ -89,101 +89,101 @@ Package Vendor: Keil
 
 <h2>Collection of Component Files used:</h2>
 
+   * Component: ::CMSIS Driver:USART:2.3.0 (API)
+      Include file:  CMSIS\Driver\Include\Driver_USART.h
+
    * Component: ::CMSIS Driver:I2C:2.3.0 (API)
       Include file:  CMSIS\Driver\Include\Driver_I2C.h
-
-   * Component: ::CMSIS Driver:SPI:2.2.0 (API)
-      Include file:  CMSIS\Driver\Include\Driver_SPI.h
 
    * Component: ::CMSIS:RTOS2:2.1.1 (API)
       Include file:  CMSIS\RTOS2\Include\cmsis_os2.h
 
-   * Component: ::CMSIS Driver:USART:2.3.0 (API)
-      Include file:  CMSIS\Driver\Include\Driver_USART.h
+   * Component: ::CMSIS Driver:SPI:2.2.0 (API)
+      Include file:  CMSIS\Driver\Include\Driver_SPI.h
 
    * Component: ARM::CMSIS:CORE:5.0.2
 
-   * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:9.0.0
-      Source file:   Source\portable\MemMang\heap_4.c
-
    * Component: ARM::CMSIS:RTOS2:FreeRTOS:9.1.0
       Source file:   CMSIS\RTOS2\FreeRTOS\Source\cmsis_os2.c
-      Source file:   CMSIS\RTOS2\FreeRTOS\Source\ARM\clib_arm.c
       Source file:   CMSIS\RTOS2\FreeRTOS\Source\os_systick.c
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\ARM\clib_arm.c
+
+   * Component: ARM.FreeRTOS::RTOS:Core:9.0.0
+      Include file:  Source\include\FreeRTOS.h
+      Source file:   Source\tasks.c
+      Include file:  Source\include\queue.h
+      Source file:   Source\queue.c
+      Source file:   Source\portable\RVDS\ARM_CM3\port.c
+      Include file:  Source\include\task.h
+      Source file:   Source\list.c
+      Include file:  Source\include\semphr.h
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\freertos_evr.c
+      Include file:  CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h
 
    * Component: ARM.FreeRTOS::RTOS:Config:CMSIS RTOS2:9.0.0
       Include file:  CMSIS\RTOS2\FreeRTOS\Config\ARMCM\FreeRTOSConfig.h
+
+   * Component: ARM.FreeRTOS::RTOS:Timers:9.0.0
+      Source file:   Source\timers.c
+      Include file:  Source\include\timers.h
 
    * Component: ARM.FreeRTOS::RTOS:Coroutines:9.0.0
       Source file:   Source\croutine.c
       Include file:  Source\include\croutine.h
 
+   * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:9.0.0
+      Source file:   Source\portable\MemMang\heap_4.c
+
    * Component: ARM.FreeRTOS::RTOS:Event Groups:9.0.0
-      Source file:   Source\event_groups.c
       Include file:  Source\include\event_groups.h
-
-   * Component: ARM.FreeRTOS::RTOS:Core:9.0.0
-      Include file:  Source\include\FreeRTOS.h
-      Source file:   Source\list.c
-      Include file:  Source\include\queue.h
-      Source file:   Source\portable\RVDS\ARM_CM3\port.c
-      Include file:  Source\include\task.h
-      Include file:  Source\include\semphr.h
-      Source file:   Source\queue.c
-      Source file:   Source\tasks.c
-      Include file:  CMSIS\RTOS2\FreeRTOS\Include\freertos_evr.h
-      Source file:   CMSIS\RTOS2\FreeRTOS\Source\freertos_evr.c
-
-   * Component: ARM.FreeRTOS::RTOS:Timers:9.0.0
-      Include file:  Source\include\timers.h
-      Source file:   Source\timers.c
-
-   * Component: Keil::CMSIS Driver:SPI:2.2
-      Source file:   RTE_Driver\SPI_STM32F10x.c
-
-   * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\system_stm32f10x.c
-      Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
-      Include file:  RTE_Driver\Config\RTE_Device.h
-
-   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Source\event_groups.c
 
    * Component: Keil::Device:StdPeriph Drivers:SPI:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
 
-   * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
-      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
-
-   * Component: Keil::Device:StdPeriph Drivers:EXTI:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
+   * Component: Keil::Device:StdPeriph Drivers:USART:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
 
    * Component: Keil::Device:GPIO:1.3
       Include file:  RTE_Driver\GPIO_STM32F10x.h
       Source file:   RTE_Driver\GPIO_STM32F10x.c
 
-   * Component: Keil::Device:DMA:1.2
-      Source file:   RTE_Driver\DMA_STM32F10x.c
-      Include file:  RTE_Driver\DMA_STM32F10x.h
+   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
-   * Component: Keil::Device:StdPeriph Drivers:USART:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
+   * Component: Keil::Device:DMA:1.2
+      Include file:  RTE_Driver\DMA_STM32F10x.h
+      Source file:   RTE_Driver\DMA_STM32F10x.c
+
+   * Component: Keil::Device:Startup:1.0.0
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\ARM\startup_stm32f10x_hd.s
+      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+
+   * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+
+   * Component: Keil::Device:StdPeriph Drivers:EXTI:3.5.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
 
    * Component: Keil::CMSIS Driver:USART:2.2
       Source file:   RTE_Driver\USART_STM32F10x.c
+
+   * Component: Keil::CMSIS Driver:SPI:2.2
+      Source file:   RTE_Driver\SPI_STM32F10x.c
 
    * Component: Keil::CMSIS Driver:I2C:2.1
       Source file:   RTE_Driver\I2C_STM32F10x.c
