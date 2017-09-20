@@ -1,5 +1,16 @@
 # NB Hardware Demo
 
+这个Demo花了两天时间，用于验证NB IOT模块通信，做完之后序礼给我一个教程，现在没时间看，先留在这里：
+  * [NB-iot开发板相关资料及NB-iot接入教程](https://open.iot.10086.cn/bbs/thread-2375-1-1.html)
+
+包含：
+  * STM32 Demo；
+  * Android UDP Demo；
+  * PHP网站，里面目前未使用到PHP，使用了WebSocket实时通信；
+  * WebSocket Demo；
+
+本Demo涉及到的代码未进行优化，有点乱乱的感觉，以后有时间再来优化处理，不过也有可能永远不会来处理。
+
 ## MCU
 
 * [STM32 Demo](stm32/StdPeriph)
