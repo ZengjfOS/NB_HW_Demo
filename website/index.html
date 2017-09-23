@@ -24,8 +24,8 @@
                     if (message.data.length > 0) {
                         root = eval("(" + message.data + ")");
                         console.log(root["temperature"]);
-                        temperature.refresh(root["temperature"]);
 
+                        // temperature.refresh(root["temperature"]);
                         gauge.value = root["temperature"];
                     }
                 };
