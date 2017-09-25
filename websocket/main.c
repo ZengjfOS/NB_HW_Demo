@@ -64,6 +64,8 @@ void * recv_data_thread(void *arg) {
             error("ERROR on inet_ntoa\n");
         printf("server received datagram from %s\n", hostaddrp);
         printf("server received %d/%d bytes: %s\n", (int)strlen(udp_buf), n, udp_buf);
+
+        usleep(1000*1000);
       
         sendto(sockfd, "ok", strlen("ok"), 0, (struct sockaddr *) &clientaddr, clientlen);
 
