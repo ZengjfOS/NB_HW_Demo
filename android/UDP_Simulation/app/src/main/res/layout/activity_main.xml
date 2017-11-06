@@ -37,9 +37,10 @@
                         android:id="@+id/udp_ip"
                         android:layout_width="500px"
                         android:layout_height="wrap_content"
-                        android:text="172.93.38.92"/>
+                        android:text="23.106.155.16"/>
                         <!--
                         android:text="23.106.155.16"/>
+                        android:text="172.93.38.92"/>
                         -->
 
                 </LinearLayout>

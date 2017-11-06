@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             DatagramPacket packet = new DatagramPacket(send_str.getBytes(), send_str.getBytes().length, address, Integer.valueOf(upd_port.getText().toString()));
                             socket.send(packet);
 
+                            socket.setSoTimeout(1000 * 6);
                             byte[] message = new byte[128];
                             DatagramPacket p = new DatagramPacket(message, message.length);
                             socket.receive(p);
@@ -104,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
                         address = InetAddress.getByName(udp_ip.getText().toString());
 
                         String send_str = "refresh";
+                        Log.d("MainActivity",  send_str);
 
                         DatagramPacket packet = new DatagramPacket(send_str.getBytes(), send_str.getBytes().length, address, Integer.valueOf(upd_port.getText().toString()));
                         socket.send(packet);
 
+                        socket.setSoTimeout(1000 * 10);
                         byte[] message = new byte[128];
                         DatagramPacket p = new DatagramPacket(message, message.length);
                         socket.receive(p);
@@ -124,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                                     String keyName = reader.nextName();
                                     if ("temperature".equals(keyName)) {
                                         temperature = reader.nextInt();
+                                        Log.e("MainActivity", "wendu" + temperature);
                                         activity.runOnUiThread(new Runnable() {
                                             public void run() {
                                                 tempControl.setTemp(temperature);
