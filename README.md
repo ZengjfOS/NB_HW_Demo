@@ -25,7 +25,7 @@
 
 ## website
 
-* [PHP Website](website)
+* [PHP Website](http://zorozeng.com/NB_HW_Demo/website/)
   ![img/NB_Hardware_Demo_Web_UI.png](img/NB_Hardware_Demo_Web_UI.png)
 
 ## websocket
